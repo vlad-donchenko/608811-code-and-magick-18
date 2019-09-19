@@ -43,16 +43,12 @@ window.renderStatistics = function (ctx, names, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < names.length; i++) {
-
+    var horizontalOffset = CLOUD_X + HISTOGRAM_GAP + (HISTOGRAM_GAP + HISTOGRAM_WIDTH) * i;
     var histagramHeight = Math.round((HISTOGRAM_HEIGHT * times[i]) / maxTime);
-    var histogramColor = 'hsl(235,' + Math.round(Math.random() * 100) + '%' + ', 27%)';
+    var histogramColor = (names[i] === 'Вы') ? histogramColor = 'rgba(255, 0, 0, 1)' : 'hsl(235,' + Math.round(Math.random() * 100) + '%' + ', 27%)';
 
-    if (names[i] === 'Вы') {
-      histogramColor = 'rgba(255, 0, 0, 1)';
-    }
-
-    printText(ctx, CLOUD_X + HISTOGRAM_GAP + (HISTOGRAM_GAP + HISTOGRAM_WIDTH) * i, (CLOUD_HEIGHT + CLOUD_Y) - (histagramHeight + TEXT_HEIGHT * 3), '#000000', Math.round(times[i]));
-    renderRectangle(ctx, CLOUD_X + HISTOGRAM_GAP + (HISTOGRAM_GAP + HISTOGRAM_WIDTH) * i, CLOUD_Y + CLOUD_HEIGHT - 2 * TEXT_HEIGHT, HISTOGRAM_WIDTH, -(histagramHeight), histogramColor);
-    printText(ctx, CLOUD_X + HISTOGRAM_GAP + (HISTOGRAM_GAP + HISTOGRAM_WIDTH) * i, CLOUD_Y + CLOUD_HEIGHT - TEXT_HEIGHT, '#000000', names[i]);
+    printText(ctx, horizontalOffset, (CLOUD_HEIGHT + CLOUD_Y) - (histagramHeight + TEXT_HEIGHT * 3), '#000000', Math.round(times[i]));
+    renderRectangle(ctx, horizontalOffset, CLOUD_Y + CLOUD_HEIGHT - 2 * TEXT_HEIGHT, HISTOGRAM_WIDTH, -(histagramHeight), histogramColor);
+    printText(ctx, horizontalOffset, CLOUD_Y + CLOUD_HEIGHT - TEXT_HEIGHT, '#000000', names[i]);
   }
 };
