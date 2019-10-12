@@ -85,9 +85,6 @@
                  maxlength="25" minlength="2" required
                  class="setup-user-name" value="Синий Пендальф"/>
         </label>
-        <label>
-          <input type="hidden" name="wizard-coat-color" class="wizard-coat-color" value="#6589a4">
-        </label>
       </div>
 
       <span class="setup-close" tabindex="0">&times;</span>
@@ -119,13 +116,13 @@
             </g>
           </svg>
         </div>
-        <input type="hidden" name="coat-color" value="rgb(101, 137, 164)">
-        <input type="hidden" name="eyes-color" value="black">
+        <input type="hidden" name="coat-color" class="wizard-coat-color" value="rgb(101, 137, 164)">
+        <input type="hidden" name="eyes-color" class="wizard-eyes-color" value="black">
       </div>
 
       <div class="setup-fireball-wrap">
         <div class="setup-fireball"></div>
-        <input type="hidden" name="fireball-color" value="#ee4830">
+        <input type="hidden" name="fireball-color" class="wizard-fireball-color" value="#ee4830">
       </div>
 
       <div class="setup-artifacts" dropzone="move">

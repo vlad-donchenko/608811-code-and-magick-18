@@ -13,10 +13,17 @@ var playersNames = ['Иван', 'Хуан Себастьян', 'Мария', 'К
 var playersSurnames = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var coatsColors = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var eyesColors = ['black', 'red', 'blue', 'yellow', 'green'];
+var fireballsColors = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 var wizardCoatColorInput = setup.querySelector('.wizard-coat-color');
 var wizardCoatElement = setup.querySelector('.wizard-coat');
+var wizardEyesColorElement = setup.querySelector('.wizard-eyes');
+var wizardEyesColorInput = setup.querySelector('.wizard-eyes-color');
+var wizardFireballColorElement = setup.querySelector('.setup-fireball-wrap');
+var wizardFireballColorInput = setup.querySelector('.wizard-fireball-color');
+var wizardNameInput = setup.querySelector('.setup-user-name');
+var colorCount = 1;
 
 
 var randomInteger = function (min, max) {
@@ -51,7 +58,6 @@ for (var i = 0; i < PLAYERS_COUNT; i++) {
 
 var onModalEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
-    console.log('Нажато ESC')
     setup.classList.add('hidden');
   }
 };
@@ -86,12 +92,30 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
+var onCoatColorClick = function (element, input, colors) {
+  var color = colors[colorCount];
+  colorCount++;
+  input.value = color;
 
-var onCoatColorClick = function () {
-  var color = coatsColors[randomInteger(0, coatsColors.length)]
-  wizardCoatElement.style.fill = color;
-  wizardCoatColorInput.value = color;
+  if (element !== wizardFireballColorElement) {
+    element.style.fill = color;
+  } else {
+    element.style.backgroundColor = color;
+  }
+
+  if (colorCount === colors.length) {
+    colorCount = 0;
+  }
 };
 
-wizardCoatElement.addEventListener('click', onCoatColorClick);
+wizardCoatElement.addEventListener('click', function () {
+  onCoatColorClick(wizardCoatElement, wizardCoatColorInput, coatsColors);
+});
 
+wizardEyesColorElement.addEventListener('click', function () {
+  onCoatColorClick(wizardEyesColorElement, wizardEyesColorInput, eyesColors);
+});
+
+wizardFireballColorElement.addEventListener('click', function () {
+  onCoatColorClick(wizardFireballColorElement, wizardFireballColorInput, fireballsColors);
+});
