@@ -22,7 +22,6 @@ var wizardEyesColorElement = setup.querySelector('.wizard-eyes');
 var wizardEyesColorInput = setup.querySelector('.wizard-eyes-color');
 var wizardFireballColorElement = setup.querySelector('.setup-fireball-wrap');
 var wizardFireballColorInput = setup.querySelector('.wizard-fireball-color');
-var wizardNameInput = setup.querySelector('.setup-user-name');
 var colorCount = 1;
 
 
