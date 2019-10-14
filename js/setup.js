@@ -57,7 +57,7 @@ for (var i = 0; i < PLAYERS_COUNT; i++) {
 
 
 var onModalEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
+  if (evt.keyCode === ESC_KEYCODE && !evt.target.classList.contains('setup-user-name')) {
     setup.classList.add('hidden');
   }
 };
