@@ -54,7 +54,7 @@
     }
   };
 
-  window.backend.load(renderWizard, onError);
+  window.backend.load(window.backend.loadRequest, renderWizard, onError);
 
   var onModalEscPress = function (evt) {
     if (evt.keyCode === ESC_KEYCODE && !evt.target.classList.contains('setup-user-name')) {
@@ -127,7 +127,7 @@
   };
 
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), onCloseSetupSubmit, onError);
+    window.backend.save(window.backend.saveRequest, onCloseSetupSubmit, onError, new FormData(form));
     evt.preventDefault();
   });
 
